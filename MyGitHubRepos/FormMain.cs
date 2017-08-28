@@ -39,8 +39,7 @@ namespace MyGitHubRepos
     {
       Assembly assembly = Assembly.GetExecutingAssembly();
       FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-      Text += string.Format(" V{0}.{1}.{2}.{3}", fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart,
-        fvi.FilePrivatePart);
+      Text += $" V{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}.{fvi.FilePrivatePart}";
     }
 
     private void FormMainLoad(object sender, EventArgs e)
@@ -477,7 +476,7 @@ namespace MyGitHubRepos
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
       TextBox control = focusedControl as TextBox;
-      if (control != null) control.SelectAll();
+      control?.SelectAll();
     }
 
     private void CutToClipboard(TextBoxBase tb, string errorMessage = "nothing")
